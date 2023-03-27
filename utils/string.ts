@@ -1,0 +1,18 @@
+import { strFromU8, strToU8, unzlibSync, zlibSync } from "fflate";
+
+export const utoa = (data: string): string => {
+  const buffer = strToU8(data);
+  const zipped = zlibSync(buffer, { level: 9 });
+  const binary = strFromU8(zipped, true);
+  return btoa(binary);
+};
+
+export const atou = (base64: string): string => {
+  const binary = atob(base64);
+  if (binary.startsWith("\u0078\u00DA")) {
+    const buffer = strToU8(binary, true);
+    const unzipped = unzlibSync(buffer);
+    return strFromU8(unzipped);
+  }
+  return decodeURIComponent(escape(binary));
+};

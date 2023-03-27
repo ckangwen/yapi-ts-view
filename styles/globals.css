@@ -1,0 +1,27 @@
+@import "@radix-ui/colors/violet.css";
+@import "antd/dist/reset.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-icon {
+    @apply text-violet11;
+  }
+  .bg-icon-hover {
+    @apply bg-violet4;
+  }
+  .text-text {
+    @apply text-violet11;
+  }
+}
+
+@layer components {
+  .icon {
+    @apply text-icon hover:bg-icon-hover inline-flex h-[25px] w-[25px] cursor-pointer items-center justify-center rounded-full hover:bg-icon-hover;
+  }
+  .icon-svg {
+    @apply h-[16px] w-[16px];
+  }
+}
